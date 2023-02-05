@@ -1,18 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
-import { useGetHealthCheckQuery } from './services/feelme_api'
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import "./App.css";
+import { useGetHealthCheckQuery } from "./services/feelme_api";
 
 function App() {
-  const {data, isLoading, isError, error} = useGetHealthCheckQuery({})
+  const { data, isLoading, isError, error } = useGetHealthCheckQuery({});
 
   return (
     <div className="App">
       <h1>Hello, World!</h1>
       <p>Status: {!isLoading && !isError && data?.message}</p>
       <p>{isError && JSON.stringify(error)}</p>
-      </div>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
