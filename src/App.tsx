@@ -9,8 +9,8 @@ function App() {
   return (
     <div className="App">
       <h1>Hello, World!</h1>
-      <p>Status: {!isLoading && data?.message}</p>
-      <p>Error: {isError && JSON.stringify(error)}</p>
+      <p>Status: {!isLoading && !isError && data?.message}</p>
+      <p>{isError && JSON.stringify(error)}</p>
       </div>
   )
 }
