@@ -1,4 +1,6 @@
+import React from "react";
 import "./App.css";
+import { HealthCheck } from "./components/HealthCheck";
 import { useGetHealthCheckQuery } from "./services/feelme_api";
 
 function App() {
@@ -6,19 +8,9 @@ function App() {
     useGetHealthCheckQuery({});
 
   return (
-    <div className="App">
-      <h1>Hello, World!</h1>
-      <p>
-        Status: {!isLoading && !isError ? data?.message : JSON.stringify(error)}
-      </p>
-      <p>
-        {String(isError)}
-        {isLoading}
-      </p>
-      <p>
-        {import.meta.env.VITE_BASE_URL}/{endpointName}
-      </p>
-    </div>
+    <React.Fragment>
+      <HealthCheck />
+    </React.Fragment>
   );
 }
 
