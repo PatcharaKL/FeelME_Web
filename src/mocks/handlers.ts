@@ -2,7 +2,7 @@
 import { rest } from "msw";
 
 const testUrl = (baseUrl: string) => {
-  return `http://localhost:5173${baseUrl}`;
+  return `${import.meta.env.VITE_BASE_URL}${baseUrl}`;
 };
 
 export const handlers = [
