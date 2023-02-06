@@ -12,7 +12,7 @@ function App() {
         Status: {!isLoading && !isError ? data?.message : JSON.stringify(error)}
       </p>
       <p>
-        {isError}
+        {String(isError)}
         {isLoading}
       </p>
       <p>

@@ -7,7 +7,6 @@ import { Provider } from "react-redux";
 
 if (process.env.NODE_ENV === "development") {
   const { worker } = await import("./mocks/browser");
-  console.warn("Hello! \n\n\n");
   worker.start();
 }
 
