@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 // Define a service using a base URL and expected endpoints
 export const feelmeAPI = createApi({
   reducerPath: 'feelmeAPI',
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5173" }),
+  baseQuery: fetchBaseQuery({ baseUrl: import.meta.env.VITE_BASE_URL }),
   endpoints: (builder) => ({
     getHealthCheck: builder.query({
       query: () => `/health-check`,
