@@ -6,16 +6,9 @@ export const HealthCheck = () => {
     useGetHealthCheckQuery({});
   return (
     <div className="App">
-      <h1>Hello, World!</h1>
+      <h1 className="font-bold">Welcome to FeelMe</h1>
       <p>
         Status: {!isLoading && !isError ? data?.message : JSON.stringify(error)}
-      </p>
-      <p>
-        {String(isError)}
-        {isLoading}
-      </p>
-      <p>
-        {import.meta.env.VITE_BASE_URL}/{endpointName}
       </p>
     </div>
   );

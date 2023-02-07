@@ -1,6 +1,6 @@
-import { renderWithProviders } from "../utils/test-utils";
+import { renderWithProviders } from "../../utils/test-utils";
 import { screen, waitFor } from "@testing-library/react";
-import { HealthCheck } from "./HealthCheck";
+import { HealthCheck } from "../HealthCheck";
 
 //* use 'screen.debug()' when want to output dom in terminal
 describe("test Health Check", () => {

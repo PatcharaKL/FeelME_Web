@@ -1,7 +1,6 @@
 import React from "react";
-import "./App.css";
-import { HealthCheck } from "./components/HealthCheck";
 import { useGetHealthCheckQuery } from "./services/feelme_api";
+import SideBar from "./components/side-bar/SideBar";
 
 function App() {
   const { data, isLoading, isError, error, endpointName } =
@@ -9,7 +8,7 @@ function App() {
 
   return (
     <React.Fragment>
-      <HealthCheck />
+      <SideBar />
     </React.Fragment>
   );
 }
