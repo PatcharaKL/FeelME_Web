@@ -1,14 +1,12 @@
 import React from "react";
 import { useGetHealthCheckQuery } from "./services/feelme_api";
 import SideBar from "./components/side-bar/SideBar";
+import FeelMe from "./pages/FeelMe";
 
 function App() {
-  const { data, isLoading, isError, error, endpointName } =
-    useGetHealthCheckQuery({});
-
   return (
     <React.Fragment>
-      <SideBar />
+      <FeelMe />
     </React.Fragment>
   );
 }
