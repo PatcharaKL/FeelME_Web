@@ -10,7 +10,7 @@ const SideBar = () => {
   const [selected, setSelected] = useState("");
   return (
     <>
-      <SideBarContainer className="flex h-full w-64 flex-col gap-16 rounded-xl ">
+      <SideBarContainer className="flex h-full w-56 flex-col gap-12 rounded-xl ">
         <SideBarItemsGroup className="flex justify-center">
           <SideBarLogo Logo={FeelMeLogo} />
         </SideBarItemsGroup>
@@ -37,7 +37,10 @@ const SideBarItemsGroup = (props: React.HTMLAttributes<HTMLDivElement>) => {
 
 const SideBarLogo = ({ Logo, to = default_nav }: any) => {
   return (
-    <a href={to}>
+    <a
+      href={to}
+      className="transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:rotate-1 hover:scale-110"
+    >
       <Logo />
     </a>
   );
@@ -49,12 +52,12 @@ const SideBarItem = ({
   to = default_nav,
 }: SideBarItemProps) => {
   return (
-    <div className="flex gap-5 px-7 py-2">
-      <Icon />
-      <a className="text-center text-lg font-medium text-gray-900" href={to}>
+    <a className="text-center text-lg font-medium text-gray-900" href={to}>
+      <span className="flex gap-5 px-7 py-2">
+        <Icon />
         {name}
-      </a>
-    </div>
+      </span>
+    </a>
   );
 };
 
