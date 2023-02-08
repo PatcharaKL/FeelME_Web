@@ -1,5 +1,7 @@
+// FeelThem
 import { useState } from "react";
 import { FeelMeLogo } from "../FeelMeLogo";
+import { icons } from "../../assets/icons";
 
 const default_nav = "#";
 
@@ -39,10 +41,10 @@ const SideBarLogo = ({ Logo, to = default_nav }: any) => {
   );
 };
 
-const SideBarItem = ({ name, to = default_nav }: any) => {
+const SideBarItem = ({ Icon = icons.default, name, to = default_nav }: any) => {
   return (
     <div className="flex gap-5   px-7 py-2">
-      <div className=" h-auto w-7 rounded-full bg-slate-600"></div>
+      <Icon />
       <a className="text-center text-lg font-semibold text-gray-900" href={to}>
         {name}
       </a>
