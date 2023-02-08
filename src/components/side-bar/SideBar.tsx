@@ -39,7 +39,7 @@ const SideBarLogo = ({ Logo, to = default_nav }: any) => {
   return (
     <a
       href={to}
-      className="transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:rotate-1 hover:scale-110"
+      className="text-center transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:rotate-1 hover:scale-110"
     >
       <Logo />
     </a>
@@ -52,7 +52,7 @@ const SideBarItem = ({
   to = default_nav,
 }: SideBarItemProps) => {
   return (
-    <a className="text-center text-lg font-medium text-gray-900" href={to}>
+    <a className="text-center text-lg font-normal text-gray-900" href={to}>
       <span className="flex gap-5 px-7 py-2">
         <Icon />
         {name}
