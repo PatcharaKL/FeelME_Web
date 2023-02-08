@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { FeelMeLogo } from "../FeelMeLogo";
 import { icons } from "../../assets/icons";
+import { SvgIconComponent } from "@mui/icons-material";
 
 const default_nav = "#";
 
@@ -14,11 +15,12 @@ const SideBar = () => {
           <SideBarLogo Logo={FeelMeLogo} />
         </SideBarItemsGroup>
         <SideBarItemsGroup className="flex flex-1 flex-col gap-3">
-          <SideBarItem name="Dashboard" />
-          <SideBarItem name="Employees" />
+          <SideBarItem icon={icons.dashboard} name="Dashboard" />
+          <SideBarItem icon={icons.diversity} name="Employees" />
+          <SideBarItem icon={icons.setting} name="Setting" />
         </SideBarItemsGroup>
         <SideBarItemsGroup className="">
-          <SideBarItem name="Logout" />
+          <SideBarItem icon={icons.logout} name="Logout" />
         </SideBarItemsGroup>
       </SideBarContainer>
     </>
@@ -41,15 +43,25 @@ const SideBarLogo = ({ Logo, to = default_nav }: any) => {
   );
 };
 
-const SideBarItem = ({ Icon = icons.default, name, to = default_nav }: any) => {
+const SideBarItem = ({
+  icon: Icon = icons.default,
+  name,
+  to = default_nav,
+}: SideBarItemProps) => {
   return (
-    <div className="flex gap-5   px-7 py-2">
+    <div className="flex gap-5 px-7 py-2">
       <Icon />
-      <a className="text-center text-lg font-semibold text-gray-900" href={to}>
+      <a className="text-center text-lg font-medium text-gray-900" href={to}>
         {name}
       </a>
     </div>
   );
 };
+
+interface SideBarItemProps {
+  name: string;
+  icon?: SvgIconComponent;
+  to?: string;
+}
 
 export default SideBar;
