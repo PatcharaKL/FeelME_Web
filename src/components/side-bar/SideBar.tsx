@@ -4,10 +4,31 @@ import { FeelMeLogo } from "../FeelMeLogo";
 import { icons } from "../../assets/icons";
 import { SvgIconComponent } from "@mui/icons-material";
 
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { setSelectedItem } from "../../features/sidebar-selection/sidebarSelectionSlice";
+
 const default_nav = "#";
 
+const sidebarItemList: SideBarItemType[] = [
+  {
+    id: 1,
+    name: "Dashboard",
+    icon: icons.dashboard,
+  },
+  {
+    id: 2,
+    name: "Employees",
+    icon: icons.diversity,
+  },
+  {
+    id: 3,
+    name: "Setting",
+    icon: icons.setting,
+  },
+];
+
 const SideBar = () => {
-  const [selected, setSelected] = useState(false);
+  const sidebarItems = sidebarItemList.map((item) => <SideBarItem {...item} />);
   return (
     <>
       <SideBarContainer className="flex h-full w-56 flex-col gap-12 rounded-xl ">
@@ -15,12 +36,10 @@ const SideBar = () => {
           <SideBarLogo Logo={FeelMeLogo} />
         </SideBarItemsGroup>
         <SideBarItemsGroup className="flex flex-1 flex-col gap-3">
-          <SideBarItem icon={icons.dashboard} name="Dashboard" />
-          <SideBarItem icon={icons.diversity} name="Employees" />
-          <SideBarItem icon={icons.setting} name="Setting" />
+          {sidebarItems}
         </SideBarItemsGroup>
         <SideBarItemsGroup className="flex flex-col">
-          <SideBarItem icon={icons.logout} name="Logout" />
+          <SideBarItem id={4} icon={icons.logout} name="Logout" />
         </SideBarItemsGroup>
       </SideBarContainer>
     </>
@@ -47,16 +66,21 @@ const SideBarLogo = ({ Logo, to = default_nav }: any) => {
 };
 
 const SideBarItem = ({
+  id,
   icon: Icon = icons.default,
   name,
   to = default_nav,
-  selected = false,
-}: SideBarItemProps) => {
+}: SideBarItemType) => {
+  const selectedID = useAppSelector(
+    (state) => state.sidebarSelection.selectedItemID
+  );
+  const dispatch = useAppDispatch();
   return (
     <button
       className={`${
-        selected && "bg-violet-800 text-white"
+        selectedID == id && "bg-violet-800 text-white"
       } group/button rounded-md text-center text-lg font-normal text-gray-600 transition duration-75 ease-in-out hover:scale-105 hover:bg-gray-300 hover:text-violet-600 active:scale-100`}
+      onClick={() => dispatch(setSelectedItem(id))}
     >
       <span className="flex gap-5 px-7 py-2">
         <Icon />
@@ -66,11 +90,11 @@ const SideBarItem = ({
   );
 };
 
-interface SideBarItemProps {
+interface SideBarItemType {
+  id: number;
   name: string;
   icon?: SvgIconComponent;
   to?: string;
-  selected?: boolean;
 }
 
 export default SideBar;
