@@ -10,7 +10,7 @@ export const FeelMeLogo = () => {
         Feel<span className="font-extrabold text-violet-700">them</span>
       </div>
       <div className="text-start text-sm font-light text-gray-600">
-        -- feel your peoples -----
+        -- feel your people -----
       </div>
     </>
   );

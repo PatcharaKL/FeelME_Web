@@ -71,15 +71,16 @@ const SideBarItem = ({
   name,
   to = default_nav,
 }: SideBarItemType) => {
+  const dispatch = useAppDispatch();
   const selectedID = useAppSelector(
     (state) => state.sidebarSelection.selectedItemID
   );
-  const dispatch = useAppDispatch();
   return (
     <button
       className={`${
-        selectedID == id && "bg-violet-800 text-white"
-      } group/button rounded-md text-center text-lg font-normal text-gray-600 transition duration-75 ease-in-out hover:scale-105 hover:bg-gray-300 hover:text-violet-600 active:scale-100`}
+        selectedID == id &&
+        "bg-violet-800 text-white hover:bg-violet-800 hover:text-white"
+      } group/unselected rounded-md text-center text-lg font-normal text-gray-600 transition duration-75 ease-in-out hover:scale-105 hover:bg-violet-100 hover:text-violet-600 active:scale-100`}
       onClick={() => dispatch(setSelectedItem(id))}
     >
       <span className="flex gap-5 px-7 py-2">
