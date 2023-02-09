@@ -8,7 +8,7 @@ describe("test Health Check", () => {
     // Arrange
     renderWithProviders(<FeelMeLogo />);
     const feelText = await screen.findByText("Feel");
-    const meText = await screen.findByText("Me");
+    const meText = await screen.findByText("them");
 
     // Assert
     await expect(feelText).toBeDefined;
