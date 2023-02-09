@@ -7,7 +7,7 @@ const FeelMe = () => {
           <SideBar />
           <div
             id="board"
-            className="flex-1 overflow-hidden rounded-md bg-white drop-shadow-sm"
+            className="flex-1 overflow-hidden rounded-md bg-white drop-shadow-lg"
           ></div>
         </div>
       </div>
