@@ -78,9 +78,10 @@ const SideBarItem = ({
   return (
     <button
       className={`${
-        selectedID == id &&
-        "bg-violet-800 text-white hover:bg-violet-800 hover:text-white"
-      } group/unselected rounded-md text-center text-lg font-normal text-gray-600 transition duration-75 ease-in-out hover:scale-105 hover:bg-violet-100 hover:text-violet-600 active:scale-100`}
+        selectedID == id
+          ? "bg-violet-800 text-white hover:bg-violet-800 hover:text-white"
+          : "hover:bg-violet-100 hover:text-violet-600"
+      } group/unselected rounded-md text-center text-lg font-normal text-gray-600 transition duration-75 ease-in-out hover:scale-105  active:scale-100`}
       onClick={() => dispatch(setSelectedItem(id))}
     >
       <span className="flex select-none gap-5 px-7 py-2">
