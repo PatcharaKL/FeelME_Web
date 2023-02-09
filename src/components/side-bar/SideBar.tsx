@@ -53,7 +53,11 @@ const SideBarItem = ({
   selected = false,
 }: SideBarItemProps) => {
   return (
-    <button className="rounded-md text-center text-lg font-normal text-gray-600 transition duration-75 ease-in-out hover:scale-105 hover:bg-gray-300 hover:text-violet-600 active:scale-100">
+    <button
+      className={`${
+        selected && "bg-violet-800 text-white"
+      } group/button rounded-md text-center text-lg font-normal text-gray-600 transition duration-75 ease-in-out hover:scale-105 hover:bg-gray-300 hover:text-violet-600 active:scale-100`}
+    >
       <span className="flex gap-5 px-7 py-2">
         <Icon />
         {name}
