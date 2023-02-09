@@ -83,7 +83,7 @@ const SideBarItem = ({
       } group/unselected rounded-md text-center text-lg font-normal text-gray-600 transition duration-75 ease-in-out hover:scale-105 hover:bg-violet-100 hover:text-violet-600 active:scale-100`}
       onClick={() => dispatch(setSelectedItem(id))}
     >
-      <span className="flex gap-5 px-7 py-2">
+      <span className="flex select-none gap-5 px-7 py-2">
         <Icon />
         {name}
       </span>
