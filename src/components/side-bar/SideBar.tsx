@@ -58,7 +58,7 @@ const SideBarLogo = ({ Logo, to = default_nav }: any) => {
   return (
     <a
       href={to}
-      className="text-center transition delay-150 duration-300 ease-in-out hover:-translate-y-1 hover:rotate-1 hover:scale-110"
+      className="text-center transition duration-100 ease-in-out hover:scale-105 active:scale-100"
     >
       <Logo />
     </a>
