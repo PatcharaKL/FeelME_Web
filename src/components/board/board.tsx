@@ -1,4 +1,14 @@
+import { Graph } from "../graph/graph";
+
 export const Board = () => {
+  return (
+    <>
+      <Graph />
+    </>
+  );
+};
+
+const Content = () => {
   return (
     <div
       id="board"

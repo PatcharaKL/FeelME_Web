@@ -28,7 +28,9 @@ const sidebarItemList: SideBarItemType[] = [
 ];
 
 const SideBar = () => {
-  const sidebarItems = sidebarItemList.map((item) => <SideBarItem {...item} />);
+  const sidebarItems = sidebarItemList.map((item) => (
+    <SideBarItem key={item.id} {...item} />
+  ));
   return (
     <>
       <SideBarContainer className="flex h-full w-56 flex-col gap-12 rounded-xl ">
