@@ -52,46 +52,37 @@ interface UserHappinessHistory {
   date: string;
 }
 
-const transformToChartData = (rawData: RawUserHappinessHistory) => {
-  const data: UserHappinessHistory[] = [
-    {
-      id: 1,
-      self_points: 5,
-      work_points: 4,
-      co_worker_points: 3,
-      date: "2022-01-01",
-    },
-    {
-      id: 1,
-      self_points: 2,
-      work_points: -5,
-      co_worker_points: 3,
-      date: "2022-01-02",
-    },
-    {
-      id: 1,
-      self_points: 5,
-      work_points: 4,
-      co_worker_points: -3,
-      date: "2022-01-03",
-    },
-  ];
-  return data;
+const transformToChartData = (
+  rawData?: RawUserHappinessHistory
+): UserHappinessHistory[] => {
+  const { id, record } = resMock;
+  const transformedData = [];
+  for (const i in record) {
+    console.log(record[i]);
+    transformedData.push({
+      id: id,
+      ...record[i].happiness_points,
+      date: record[i].date,
+    });
+  }
+  return transformedData;
 };
 
 export const Graph = () => {
   return (
-    <div>
-      <BarChart width={730} height={250} data={transformToChartData(resMock)}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="date" />
-        <YAxis />
-        <Tooltip />
-        <Legend />
-        <Bar dataKey="self_points" fill="#8884d8" />
-        <Bar dataKey="work_points" fill="#82ca9d" />
-        <Bar dataKey="co_worker_points" fill="#dcd505" />
-      </BarChart>
-    </div>
+    <>
+      <div>
+        <BarChart width={730} height={250} data={transformToChartData(resMock)}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="date" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="self_points" fill="#8884d8" />
+          <Bar dataKey="work_points" fill="#82ca9d" />
+          <Bar dataKey="co_worker_points" fill="#dcd505" />
+        </BarChart>
+      </div>
+    </>
   );
 };
