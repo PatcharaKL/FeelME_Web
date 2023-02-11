@@ -32,6 +32,12 @@ npm run coverage
 npm run ui
 ```
 
+- ### Build and preview production
+```bash
+npm run build
+npm run preview
+```
+
 ## NOTE: Command Option
 
 ```bash
