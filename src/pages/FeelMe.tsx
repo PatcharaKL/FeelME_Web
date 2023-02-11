@@ -1,4 +1,4 @@
-import { Board } from "../components/board/board";
+import { Board } from "../components/board/Board";
 import SideBar from "../components/side-bar/SideBar";
 const FeelMe = () => {
   return (

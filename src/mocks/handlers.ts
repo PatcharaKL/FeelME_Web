@@ -15,7 +15,7 @@ export const handlers = [
     );
   }),
 
-  rest.get(testUrl("/users/1/happiness-points"), (req, res, ctx) => {
+  rest.get(testUrl("/users/employees/:id/happiness-points"), (req, res, ctx) => {
     return res(
       ctx.status(200),
       ctx.json(happiness_points)

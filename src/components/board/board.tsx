@@ -1,18 +1,13 @@
-import { Graph } from "../graph/graph";
+import { Chart } from "../graph/BarChart";
 
 export const Board = () => {
   return (
-    <>
-      <Graph />
-    </>
+    <div
+      id="board"
+      className="flex flex-1 items-center justify-center overflow-hidden rounded-md bg-white text-white drop-shadow-md"
+    >
+      <Chart />
+      <Chart />
+    </div>
   );
-};
-
-const Loading = () => {
-  <div
-    id="board"
-    className="flex flex-1 animate-pulse flex-col justify-center overflow-hidden rounded-md bg-gray-500 text-center font-mono text-6xl font-black text-white drop-shadow-lg"
-  >
-    <div>LOADING...</div>
-  </div>;
 };
