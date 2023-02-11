@@ -7,12 +7,6 @@ const FeelMe = () => {
         <div className="flex h-full gap-6">
           <SideBar />
           <Board />
-          {/* <div
-            id="board"
-            className="flex flex-1 animate-pulse flex-col justify-center overflow-hidden rounded-md bg-gray-500 text-center font-mono text-6xl font-black text-white drop-shadow-lg"
-          >
-            <div>LOADING...</div>
-          </div> */}
         </div>
       </div>
     </>
