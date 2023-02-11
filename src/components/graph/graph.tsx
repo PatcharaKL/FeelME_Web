@@ -7,6 +7,9 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { useGetHappinessPointsQuery } from "../../services/feelme_api";
+
+const userID = 1;
 
 const resMock = {
   id: 1,
@@ -58,7 +61,6 @@ const transformToChartData = (
   const { id, record } = resMock;
   const transformedData = [];
   for (const i in record) {
-    console.log(record[i]);
     transformedData.push({
       id: id,
       ...record[i].happiness_points,
@@ -69,20 +71,25 @@ const transformToChartData = (
 };
 
 export const Graph = () => {
+  const { data, isLoading, error } = useGetHappinessPointsQuery(userID);
   return (
     <>
-      <div>
-        <BarChart width={730} height={250} data={transformToChartData(resMock)}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="date" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Bar dataKey="self_points" fill="#8884d8" />
-          <Bar dataKey="work_points" fill="#82ca9d" />
-          <Bar dataKey="co_worker_points" fill="#dcd505" />
-        </BarChart>
-      </div>
+      {isLoading ? (
+        "loading"
+      ) : (
+        <div>
+          <BarChart width={730} height={250} data={transformToChartData(data)}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="date" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="self_points" fill="#8884d8" />
+            <Bar dataKey="work_points" fill="#82ca9d" />
+            <Bar dataKey="co_worker_points" fill="#dcd505" />
+          </BarChart>
+        </div>
+      )}
     </>
   );
 };
