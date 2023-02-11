@@ -10,7 +10,7 @@ export const feelmeAPI = createApi({
       query: () => `/health-check`,
     }),
     getHappinessPoints: builder.query({
-      query: (id) => ` /users/employees/${id}/happiness-points`,
+      query: (id) => `/users/employees/${id}/happiness-points`,
     }),
   }),
 })
