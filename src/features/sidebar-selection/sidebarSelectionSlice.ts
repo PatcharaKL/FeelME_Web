@@ -9,7 +9,7 @@ interface sidebarSelectionState {
 
 // Define the initial state using that type
 const initialState: sidebarSelectionState = {
-    selectedItemID: 0,
+    selectedItemID: 1,
 
 }
 

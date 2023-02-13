@@ -8,6 +8,7 @@ import {
   YAxis,
   ResponsiveContainer,
   ReferenceArea,
+  ReferenceLine,
 } from "recharts";
 import { useGetHappinessPointsQuery } from "../../services/feelme_api";
 
@@ -62,9 +63,14 @@ export const Chart = () => {
             <BarChart data={transformToChartData(data)}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="date" />
-              <YAxis />
+              <YAxis
+                dataKey={"Happiness points"}
+                tickCount={10}
+                domain={[-5, 5]}
+              />
               <Tooltip />
               <Legend />
+              <ReferenceLine y={0} stroke="#000" />
               <Bar
                 label={{ fill: "white" }}
                 dataKey="self_points"
