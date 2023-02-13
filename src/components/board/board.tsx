@@ -20,7 +20,7 @@ export const Board = () => {
   return (
     <div
       id="board"
-      className="flex flex-1 items-center justify-center overflow-hidden rounded-md bg-white text-white drop-shadow-md"
+      className="flex flex-1 items-center justify-center overflow-hidden rounded-md bg-white drop-shadow-md"
     >
       {Display()}
     </div>
