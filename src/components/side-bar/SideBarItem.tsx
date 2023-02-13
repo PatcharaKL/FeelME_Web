@@ -19,12 +19,12 @@ export const SideBarItem = ({
     <button
       className={`${
         selectedID == id
-          ? "bg-violet-800 text-white hover:bg-violet-800 hover:text-white"
+          ? "bg-violet-700 text-gray-50 hover:bg-violet-700 hover:text-white"
           : "hover:bg-violet-100 hover:text-violet-600"
-      } group/unselected rounded-md text-center text-lg font-normal text-gray-600 transition duration-75 ease-in-out hover:scale-105  active:scale-100`}
+      } group/unselected text-md mx-3 rounded-lg text-center font-medium text-gray-500 transition duration-75 ease-in-out hover:scale-105  active:scale-100`}
       onClick={() => dispatch(setSelectedItem(id))}
     >
-      <span className="flex select-none gap-5 px-7 py-2">
+      <span className="flex select-none gap-3 px-4 py-2">
         <Icon />
         {name}
       </span>
