@@ -31,7 +31,7 @@ const SideBar = () => {
   ));
   return (
     <>
-      <SideBarContainer className="flex h-full w-56 flex-col gap-12 rounded-xl pt-6">
+      <SideBarContainer className="flex h-full w-60 flex-col gap-12 rounded-xl px-4 pt-6">
         <SideBarItemsGroup className="flex justify-center">
           <SideBarLogo Logo={FeelMeLogo} />
         </SideBarItemsGroup>
