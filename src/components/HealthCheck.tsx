@@ -1,4 +1,3 @@
-import React from "react";
 import { useGetHealthCheckQuery } from "../services/feelme_api";
 
 export const HealthCheck = () => {

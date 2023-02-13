@@ -1,11 +1,7 @@
 // FeelThem
-import { useState } from "react";
 import { FeelMeLogo } from "../FeelMeLogo";
 import { icons } from "../../assets/icons";
-import { SvgIconComponent } from "@mui/icons-material";
 
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { setSelectedItem } from "../../features/sidebar-selection/sidebarSelectionSlice";
 import { SideBarItemType } from "./type";
 import { SideBarItem } from "./SideBarItem";
 

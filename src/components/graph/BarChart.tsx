@@ -7,7 +7,6 @@ import {
   XAxis,
   YAxis,
   ResponsiveContainer,
-  ReferenceArea,
   ReferenceLine,
 } from "recharts";
 import { useGetHappinessPointsQuery } from "../../services/feelme_api";
