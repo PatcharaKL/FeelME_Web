@@ -1,6 +1,7 @@
 import { useCallback } from "react";
 import { useAppSelector } from "../../app/hooks";
 import { Chart } from "../graph/BarChart";
+import { Employees } from "../employees/Employees";
 
 export const Board = () => {
   const selectedID = useAppSelector(
@@ -12,7 +13,7 @@ export const Board = () => {
       return <Chart />;
     }
     if (selectedID === 2) {
-      return <div>Coming soon..</div>;
+      return <Employees />;
     }
     return <div>None..</div>;
   }, [selectedID]);
@@ -20,7 +21,7 @@ export const Board = () => {
   return (
     <div
       id="board"
-      className="flex flex-1 items-center justify-center overflow-hidden rounded-md bg-white text-white drop-shadow-md"
+      className="flex h-full w-full flex-1 items-center justify-center overflow-hidden rounded-md bg-white drop-shadow-md"
     >
       {Display()}
     </div>
