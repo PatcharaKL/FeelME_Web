@@ -3,13 +3,10 @@ import { icons } from "../../assets/icons";
 import { setSelectedItem } from "../../features/sidebar-selection/sidebarSelectionSlice";
 import { SideBarItemType } from "./type";
 
-const default_nav = "#";
-
 export const SideBarItem = ({
   id,
   icon: Icon = icons.default,
   name,
-  to = default_nav,
 }: SideBarItemType) => {
   const dispatch = useAppDispatch();
   const selectedID = useAppSelector(
