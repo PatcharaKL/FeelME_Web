@@ -71,18 +71,9 @@ export const Chart = () => {
               <Tooltip />
               <Legend />
               <ReferenceLine y={0} stroke="#000" />
-              <Line
-                type="monotone"
-                label={{ fill: "white" }}
-                dataKey="self_points"
-                fill="#8884d8"
-              />
+              <Line type="monotone" dataKey="self_points" fill="#8884d8" />
+              <Line type="monotone" dataKey="work_points" fill="#82ca9d" />
               {/* <Line
-                label={{ fill: "white" }}
-                dataKey="work_points"
-                fill="#82ca9d"
-              />
-              <Line
                 label={{ fill: "white" }}
                 dataKey="co_worker_points"
                 fill="#dcd505"

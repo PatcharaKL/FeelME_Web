@@ -1,4 +1,4 @@
-const range = 50;
+const range = 10;
 interface HappinessPoints {
     self_points: number;
     work_points: number;
