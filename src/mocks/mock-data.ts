@@ -1,3 +1,4 @@
+const range = 10;
 interface HappinessPoints {
     self_points: number;
     work_points: number;
@@ -15,40 +16,33 @@ const randomHappinessPoint = (): HappinessPoints => {
         co_worker_points: randomNumber(),
     }
 }
+interface HappinessHistory {
+    happiness_points: HappinessPoints;
+    date: string;
+}
+const generateData = (n: number): HappinessHistory[] => {
+    const history: HappinessHistory[] = []
+    for (let i = 0; i < n; i++) {
+        const txn: HappinessHistory = {
+            happiness_points: {
+                ...randomHappinessPoint()
+            },
+            date: generateDate(i),
+        }
+        history.push(txn)
+    }
+    return history
+}
 
-export const happiness_points = {
+const generateDate = (i: number): string => {
+    const week = i * 7;
+    const date = new Date(Date.now())
+    const dateFormattedString = date.toLocaleDateString()
+    return dateFormattedString
+}
+
+export const happinessPointsMock = {
     id: 1,
     period: "weekly",
-    record: [
-        {
-            happiness_points: {
-                ...randomHappinessPoint()
-            },
-            date: "2023-01-29",
-        },
-        {
-            happiness_points: {
-                ...randomHappinessPoint()
-            },
-            date: "2023-01-22",
-        },
-        {
-            happiness_points: {
-                ...randomHappinessPoint()
-            },
-            date: "2023-01-15",
-        },
-        {
-            happiness_points: {
-                ...randomHappinessPoint()
-            },
-            date: "2023-01-08",
-        },
-        {
-            happiness_points: {
-                ...randomHappinessPoint()
-            },
-            date: "2023-01-01",
-        },
-    ],
+    record: generateData(range)
 }

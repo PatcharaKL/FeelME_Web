@@ -1,6 +1,6 @@
 import {
   Bar,
-  BarChart,
+  LineChart,
   CartesianGrid,
   Legend,
   Tooltip,
@@ -8,6 +8,7 @@ import {
   YAxis,
   ResponsiveContainer,
   ReferenceLine,
+  Line,
 } from "recharts";
 import { useGetHappinessPointsQuery } from "../../services/feelme_api";
 
@@ -58,8 +59,8 @@ export const Chart = () => {
         "loading"
       ) : (
         <div className="h-full w-full">
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={transformToChartData(data)}>
+          <ResponsiveContainer width="100%" height="70%">
+            <LineChart data={transformToChartData(data)}>
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="date" />
               <YAxis
@@ -70,22 +71,14 @@ export const Chart = () => {
               <Tooltip />
               <Legend />
               <ReferenceLine y={0} stroke="#000" />
-              <Bar
-                label={{ fill: "white" }}
-                dataKey="self_points"
-                fill="#8884d8"
-              />
-              <Bar
-                label={{ fill: "white" }}
-                dataKey="work_points"
-                fill="#82ca9d"
-              />
-              <Bar
+              <Line type="monotone" dataKey="self_points" fill="#8884d8" />
+              <Line type="monotone" dataKey="work_points" fill="#82ca9d" />
+              {/* <Line
                 label={{ fill: "white" }}
                 dataKey="co_worker_points"
                 fill="#dcd505"
-              />
-            </BarChart>
+              /> */}
+            </LineChart>
           </ResponsiveContainer>
         </div>
       )}
