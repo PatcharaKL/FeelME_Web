@@ -1,12 +1,14 @@
 import { Board } from "../components/board/Board";
-import SideBar from "../components/side-bar/SideBar";
+import LeftSideBar from "../components/side-bar/LeftSideBar";
+import RightSideBar from "../components/side-bar/RightSideBar";
 const FeelMe = () => {
   return (
     <>
-      <div className="  h-screen w-screen bg-gradient-to-br to-violet-200 p-4">
+      <div className="  h-screen w-screen bg-gradient-to-br from-white to-violet-50 p-4">
         <div className="flex h-full gap-4">
-          <SideBar />
+          <LeftSideBar />
           <Board />
+          <RightSideBar />
         </div>
       </div>
     </>
