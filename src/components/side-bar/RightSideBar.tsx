@@ -29,8 +29,8 @@ const avatar = () => {
         <AvatarImage />
       </div>
       <div>
-        <div className="text-lg font-semibold">{name}</div>
-        <div className="text-sm">{position}</div>
+        <div className="text-lg font-bold text-violet-900">{name}</div>
+        <div className="text-sm text-gray-700">{position}</div>
       </div>
     </div>
   );
@@ -39,7 +39,10 @@ const avatar = () => {
 const IconWrapper = (icon: SvgIconComponent): JSX.Element => {
   return (
     <div className="flex h-12 w-12 items-center justify-center">
-      {React.createElement(icon, { className: "w-fit h-fit text-violet-800" })}
+      {React.createElement(icon, {
+        className:
+          "w-fit h-fit text-violet-800 hover:text-violet-600 hover:scale-125",
+      })}
     </div>
   );
 };
@@ -51,7 +54,7 @@ const RightSideBar = () => {
         <SideBarItemsGroup className="flex justify-center">
           <SideBarLogo Logo={avatar} />
         </SideBarItemsGroup>
-        <SideBarItemsGroup className="flex flex-1 flex-col items-center justify-end gap-8">
+        <SideBarItemsGroup className="flex flex-1 flex-col items-center justify-end gap-4">
           <SideBarButton icon={() => IconWrapper(icons.message)} />
           <SideBarButton icon={() => IconWrapper(icons.notification)} />
         </SideBarItemsGroup>
