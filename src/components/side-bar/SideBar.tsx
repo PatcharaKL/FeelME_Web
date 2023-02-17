@@ -24,3 +24,21 @@ export const SideBarLogo = ({ Logo, to = default_nav }: any) => {
     </a>
   );
 };
+
+interface SideBarButton {
+  name?: string;
+  icon?: any;
+}
+export const SideBarButton = (
+  { name, icon: Icon }: SideBarButton,
+  props: React.HTMLAttributes<HTMLDivElement>
+) => {
+  return (
+    <div {...props}>
+      <button className="flex items-center gap-4 px-4">
+        {Icon && <Icon />}
+        {name && <div className="font-medium">{name}</div>}
+      </button>
+    </div>
+  );
+};

@@ -5,7 +5,13 @@ import { icons } from "../../assets/icons";
 
 import { SideBarItemType } from "./type";
 import { SideBarItem } from "./SideBarItem";
-import { SideBarContainer, SideBarItemsGroup, SideBarLogo } from "./SideBar";
+import {
+  SideBarButton,
+  SideBarContainer,
+  SideBarItemsGroup,
+  SideBarLogo,
+} from "./SideBar";
+import React from "react";
 
 const sidebarItemList: SideBarItemType[] = [
   {
@@ -25,22 +31,29 @@ const sidebarItemList: SideBarItemType[] = [
   },
 ];
 
+const logOutIcon = (): JSX.Element => {
+  return (
+    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-violet-900 text-white">
+      {React.createElement(icons.logout)}
+    </div>
+  );
+};
 const LeftSideBar = () => {
   const sidebarItems = sidebarItemList.map((item) => (
     <SideBarItem key={item.id} {...item} />
   ));
   return (
     <>
-      <SideBarContainer className="flex h-full w-60 flex-col gap-12 rounded-xl px-4 pt-6">
+      <SideBarContainer className="flex h-full w-60 flex-col gap-12 rounded-xl px-4 py-6">
         <SideBarItemsGroup className="flex justify-center">
           <SideBarLogo Logo={FeelMeLogo} />
         </SideBarItemsGroup>
         <SideBarItemsGroup className="flex flex-1 flex-col gap-2">
           {sidebarItems}
         </SideBarItemsGroup>
-        <SideBarItemsGroup className="flex flex-col">
-          <SideBarItem id={4} icon={icons.logout} name="Logout" />
-        </SideBarItemsGroup>
+        {/* <SideBarItemsGroup className="flex flex-col align-middle"> */}
+        <SideBarButton icon={logOutIcon} name="Logout" />
+        {/* </SideBarItemsGroup> */}
       </SideBarContainer>
     </>
   );
