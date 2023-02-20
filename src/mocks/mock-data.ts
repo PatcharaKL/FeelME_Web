@@ -47,48 +47,64 @@ export const happinessPointsMock = {
     record: generateData(range)
 }
 
+const womanURL = "https://cdn-icons-png.flaticon.com/512/6997/6997662.png"
+const menURL = "https://cdn-icons-png.flaticon.com/512/236/236831.png"
 export const employees = [
     {
         id: 1,
         name: "Patchara Kleebbua",
         hp: 100,
         position: "Fullstack Developer",
-        avatarURL: "https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png"
+        avatarURL: menURL
     },
     {
         id: 2,
         name: "Sayfar Hongsang",
         hp: 50,
         position: "Fullstack Developer",
-        avatarURL: "https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png"
+        avatarURL: menURL
     },
     {
         id: 3,
         name: "Chonkamon Wongwaikunanan",
         hp: 30,
-        position: "Fullstack Developer",
-        avatarURL: "https://cdn.icon-icons.com/icons2/2643/PNG/512/male_boy_person_people_avatar_icon_159358.png"
+        position: "Project Manager",
+        avatarURL: womanURL
     },
     {
         id: 4,
         name: "Pittaya Jindaruang",
         hp: 75,
-        position: "Fullstack Developer",
-        avatarURL: "https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png"
+        position: "Frontend Developer",
+        avatarURL: menURL
     },
     {
         id: 5,
         name: "Kittipan Laokot",
         hp: 25,
-        position: "Fullstack Developer",
-        avatarURL: "https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png"
+        position: "Frontend Developer",
+        avatarURL: menURL
     },
     {
         id: 6,
         name: "Bundit Korndee",
         hp: 100,
-        position: "Project Manager",
-        avatarURL: "https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png"
+        position: "Project Owner",
+        avatarURL: menURL
+    },
+    {
+        id: 7,
+        name: "Bike Chanokchon",
+        hp: 90,
+        position: "Fullstack Developer",
+        avatarURL: menURL
+    },
+    {
+        id: 8,
+        name: "Jirat Dekum",
+        hp: 20,
+        position: "Fullstack Developer",
+        avatarURL: menURL
     },
 
 ]
