@@ -51,9 +51,9 @@ const LeftSideBar = () => {
         <SideBarItemsGroup className="flex flex-1 flex-col gap-2">
           {sidebarItems}
         </SideBarItemsGroup>
-        {/* <SideBarItemsGroup className="flex flex-col align-middle"> */}
-        <SideBarButton icon={logOutIcon} name="Logout" />
-        {/* </SideBarItemsGroup> */}
+        <SideBarItemsGroup className="flex flex-col align-middle">
+          <SideBarButton icon={logOutIcon} name="Logout" />
+        </SideBarItemsGroup>
       </SideBarContainer>
     </>
   );

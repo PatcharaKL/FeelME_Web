@@ -1,4 +1,4 @@
-import { happinessPointsMock } from './mock-data';
+import { happinessPointsMock, employees } from './mock-data';
 import { DefaultBodyType, MockedRequest, RestHandler, rest } from "msw";
 
 const testUrl = (baseUrl: string) => {
@@ -19,6 +19,12 @@ export const handlers = [
     return res(
       ctx.status(200),
       ctx.json(happinessPointsMock)
+    );
+  }),
+  rest.get(testUrl("/users/employees"), (req, res, ctx) => {
+    return res(
+      ctx.status(200),
+      ctx.json(employees)
     );
   }),
 ];

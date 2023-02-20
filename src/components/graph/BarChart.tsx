@@ -71,13 +71,13 @@ export const Chart = () => {
               <Tooltip />
               <Legend />
               <ReferenceLine y={0} stroke="#000" />
-              <Line type="monotone" dataKey="self_points" fill="#8884d8" />
-              <Line type="monotone" dataKey="work_points" fill="#82ca9d" />
-              {/* <Line
-                label={{ fill: "white" }}
+              <Line type="monotone" dataKey="self_points" stroke="#8884d8" />
+              <Line type="monotone" dataKey="work_points" stroke="#82ca9d" />
+              <Line
+                type="monotone"
                 dataKey="co_worker_points"
-                fill="#dcd505"
-              /> */}
+                stroke="#caa782"
+              />
             </LineChart>
           </ResponsiveContainer>
         </div>
