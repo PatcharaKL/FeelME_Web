@@ -12,9 +12,15 @@ export const feelmeAPI = createApi({
     getHappinessPoints: builder.query({
       query: (id) => `/users/employees/${id}/happiness-points`,
     }),
+    getEmployees: builder.query({
+      query: () => `/users/employees`,
+    }),
+    // getEmployee: builder.query({
+    //   query: (id) => `/users/employees/${id}`,
+    // }),
   }),
 })
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetHealthCheckQuery, useGetHappinessPointsQuery } = feelmeAPI
+export const { useGetHealthCheckQuery, useGetHappinessPointsQuery, useGetEmployeesQuery } = feelmeAPI
