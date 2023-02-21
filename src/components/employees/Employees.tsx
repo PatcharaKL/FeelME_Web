@@ -71,7 +71,11 @@ const HealthBar = ({ hp }: { hp: number }) => {
   return (
     <div className="w-full">
       <div className="text-md font-semibold">
-        HP: <span className="text-violet-700">{hp}/100</span>
+        HP:{" "}
+        <span className="text-violet-700">
+          {hp}
+          <span className="text-violet-700">/100</span>
+        </span>
       </div>
       <div className="flex h-4 w-full flex-col items-start justify-center rounded-md bg-violet-100">
         <div
