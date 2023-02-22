@@ -35,7 +35,7 @@ export const SideBarButton = (
 ) => {
   return (
     <div {...props}>
-      <button className="flex items-center gap-4 px-4">
+      <button className="flex items-center gap-4 px-4 transition ease-in-out hover:scale-105">
         {Icon && <Icon />}
         {name && <div className="font-medium">{name}</div>}
       </button>
