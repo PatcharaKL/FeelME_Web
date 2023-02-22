@@ -50,37 +50,63 @@ interface Employees {
   position: string;
 }
 const EmployeesCard = ({ id, hp, name, avatarURL, position }: Employees) => {
+  const Overlay = () => {
+    return (
+      <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-red-400/20 ring-2 ring-red-600/50"></div>
+    );
+  };
   return (
-    <>
-      <div className="flex h-fit w-64 flex-col items-center gap-3 overflow-hidden rounded-2xl bg-violet-50 px-4 py-8 text-center shadow-lg shadow-violet-100">
+    <div className="relative">
+      {hp <= 0 && <Overlay />}
+      <div className="flex h-fit w-64 flex-col items-center gap-3 overflow-hidden rounded-lg bg-violet-50 px-4 py-8 text-center shadow-lg shadow-violet-100">
         <HealthBar hp={hp} />
-        <img
-          className="h-48 w-48 rounded-full object-scale-down ring-4 ring-emerald-300"
-          src={avatarURL}
-        ></img>
+        <CardImage avatarURL={avatarURL}></CardImage>
         <div className="w-full">
           <p className="truncate text-xl font-bold">{name}</p>
           <p className="truncate">{position}</p>
         </div>
       </div>
+    </div>
+  );
+};
+
+const CardImage = ({ avatarURL }: any) => {
+  return (
+    <>
+      <img
+        className="h-48 w-48 rounded-full object-scale-down ring-4 ring-emerald-300"
+        src={avatarURL}
+      ></img>
     </>
   );
 };
 
 const HealthBar = ({ hp }: { hp: number }) => {
+  const calHpColor = () => {
+    if (hp <= 20) {
+      return "#E11D48";
+    }
+    if (hp <= 50) {
+      return "#FBBF24";
+    }
+    if (hp <= 100) {
+      return "#22C55E";
+    }
+    return "#303030";
+  };
+
+  const hp_style = {
+    width: hp + "%",
+    backgroundColor: calHpColor(),
+  };
+
   return (
     <div className="w-full">
       <div className="text-md font-semibold">
-        HP:{" "}
-        <span className="text-violet-700">
-          {hp}
-          <span className="text-violet-700">/100</span>
-        </span>
+        HP: <span className="text-violet-700">{hp}/100</span>
       </div>
-      <div className="flex h-4 w-full flex-col items-start justify-center rounded-md bg-violet-100">
-        <div
-          className={`h-2 rounded-md bg-green-500`.concat(` w-[${hp}%]`)}
-        ></div>
+      <div className="flex h-4 flex-col items-start justify-center rounded-md bg-violet-200">
+        <div className={`h-2 w-10/12 rounded-md`} style={hp_style}></div>
       </div>
     </div>
   );

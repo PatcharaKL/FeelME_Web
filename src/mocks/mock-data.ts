@@ -53,7 +53,7 @@ export const employees = [
     {
         id: 1,
         name: "Patchara Kleebbua",
-        hp: 100,
+        hp: 0,
         position: "Fullstack Developer",
         avatarURL: menURL
     },
@@ -67,7 +67,7 @@ export const employees = [
     {
         id: 3,
         name: "Chonkamon Wongwaikunanan",
-        hp: 30,
+        hp: 0,
         position: "Project Manager",
         avatarURL: womanURL
     },
@@ -81,7 +81,7 @@ export const employees = [
     {
         id: 5,
         name: "Kittipan Laokot",
-        hp: 25,
+        hp: 0,
         position: "Frontend Developer",
         avatarURL: menURL
     },
@@ -106,7 +106,6 @@ export const employees = [
         position: "Fullstack Developer",
         avatarURL: menURL
     },
-
 ]
 
 // Profile URL
