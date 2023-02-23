@@ -1,12 +1,12 @@
 import React from "react";
 import FeelMe from "./pages/FeelMe";
-import { Login } from "./pages/Login";
+import { LoginPage } from "./pages/Login";
 
 function App() {
   return (
     <React.Fragment>
       {/* <FeelMe /> */}
-      <Login />
+      <LoginPage />
     </React.Fragment>
   );
 }
