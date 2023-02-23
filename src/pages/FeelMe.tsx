@@ -4,7 +4,7 @@ import RightSideBar from "../components/side-bar/RightSideBar";
 const FeelMe = () => {
   return (
     <>
-      <div className="  h-screen w-screen bg-gradient-to-br from-white to-violet-50 p-4">
+      <div className="h-screen w-screen bg-gradient-to-br from-white to-violet-50 p-4">
         <div className="flex h-full gap-4">
           <LeftSideBar />
           <Board />

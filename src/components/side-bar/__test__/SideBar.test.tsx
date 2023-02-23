@@ -1,6 +1,6 @@
 import { renderWithProviders } from "../../../utils/test-utils";
 // import { screen, waitFor } from "@testing-library/react";
-import LeftSideBar from "../SideBar";
+import LeftSideBar from "../LeftSideBar";
 
 //* use 'screen.debug()' when want to output dom in terminal
 describe("test Health Check", () => {

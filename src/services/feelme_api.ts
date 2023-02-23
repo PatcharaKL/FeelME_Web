@@ -15,6 +15,20 @@ export const feelmeAPI = createApi({
     getEmployees: builder.query({
       query: () => `/users/employees`,
     }),
+    login: builder.mutation({
+      query: credential => ({
+        url: '/login',
+        method: 'POST',
+        body: credential,
+      }),
+    }),
+    // logout: builder.mutation({
+    //   query: credential => ({
+    //     url: '/logout',
+    //     method: 'POST',
+    //     body: credential,
+    //   }),
+    // }),
     // getEmployee: builder.query({
     //   query: (id) => `/users/employees/${id}`,
     // }),
@@ -23,4 +37,4 @@ export const feelmeAPI = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetHealthCheckQuery, useGetHappinessPointsQuery, useGetEmployeesQuery } = feelmeAPI
+export const { useGetHealthCheckQuery, useGetHappinessPointsQuery, useGetEmployeesQuery, useLoginMutation } = feelmeAPI

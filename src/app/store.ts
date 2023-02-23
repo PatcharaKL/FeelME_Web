@@ -2,12 +2,15 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import type { PreloadedState } from '@reduxjs/toolkit'
 
 import { feelmeAPI } from '../services/feelme_api'
+
 import sidebarSelectionReducer from '../features/sidebar-selection/sidebarSelectionSlice'
+import authReducer from './../features/auth/authSlice';
 
 // Create the root reducer separately so we can extract the RootState type
 const rootReducer = combineReducers({
   [feelmeAPI.reducerPath]: feelmeAPI.reducer,
-  sidebarSelection: sidebarSelectionReducer
+  sidebarSelection: sidebarSelectionReducer,
+  auth: authReducer
 })
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
