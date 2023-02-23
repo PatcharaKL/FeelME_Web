@@ -4,7 +4,7 @@ import type { RootState } from '../../app/store'
 
 // Define a type for the slice state
 interface AuthState {
-    authenticated: boolean;
+    authenticated?: boolean;
     accessToken: string;
     refreshToken: string;
 }

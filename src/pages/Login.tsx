@@ -2,8 +2,10 @@ import { SvgIconComponent } from "@mui/icons-material";
 import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import { FeelMeLogo } from "../components/FeelMeLogo";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useLoginMutation } from "../services/feelme_api";
+import { useAppDispatch } from "../app/hooks";
+import { login } from "../features/auth/authSlice";
 
 export const LoginPage = () => {
   const Logo = useCallback(() => {
@@ -37,17 +39,24 @@ const Form = (
   { logo: Logo }: any,
   props: React.HTMLAttributes<HTMLDivElement>
 ) => {
+  const dispatch = useAppDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [login, { data: tokens, isLoading, isSuccess, error }] =
-    useLoginMutation();
+  const [loginTrigger, { isLoading, isSuccess }] = useLoginMutation();
+
   const loginHandler = async () => {
-    await login({
-      email: email,
-      password: password,
-    });
+    try {
+      const tokens = await loginTrigger({
+        email: email,
+        password: password,
+      }).unwrap();
+      dispatch(login(tokens));
+    } catch (err) {
+      alert(JSON.stringify(err));
+    }
     setPassword("");
   };
+
   return (
     <>
       <div className="flex h-fit w-96 flex-col items-center justify-center gap-8 rounded-xl bg-white py-14 px-10 ring-1 ring-violet-500">
