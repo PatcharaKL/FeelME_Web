@@ -36,4 +36,4 @@ export const feelmeAPI = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetHealthCheckQuery, useGetHappinessPointsQuery, useGetEmployeesQuery, useLoginMutation } = feelmeAPI
+export const { useGetHealthCheckQuery, useGetHappinessPointsQuery, useGetEmployeesQuery, useLoginMutation, useLogoutMutation } = feelmeAPI
