@@ -46,21 +46,22 @@ const Form = (
       email: email,
       password: password,
     });
+    setPassword("");
   };
   return (
     <>
       <div className="flex h-fit w-96 flex-col items-center justify-center gap-8 rounded-xl bg-white py-14 px-10 ring-1 ring-violet-500">
-        <div className="flex flex-col gap-3">
-          <Logo />
-        </div>
+        <Logo />
         <div className="flex w-full flex-col gap-6">
           <Input
+            value={email}
             setValue={setEmail}
             icon={EmailIcon}
             inputType="email"
             placeHolderText="Email"
           />
           <Input
+            value={password}
             setValue={setPassword}
             icon={LockIcon}
             inputType="password"
@@ -74,7 +75,9 @@ const Form = (
               Login
             </button>
           ) : (
-            <div>Loading...</div>
+            <div className="py-2 text-center font-medium text-violet-600">
+              Loading..
+            </div>
           )}
         </div>
       </div>
@@ -87,12 +90,14 @@ interface LoginInput {
   inputType: string;
   placeHolderText: string;
   setValue: React.Dispatch<React.SetStateAction<string>>;
+  value: string;
 }
 const Input = ({
   placeHolderText,
   inputType,
   icon: Icon,
   setValue,
+  value,
 }: LoginInput) => {
   return (
     <label className="relative block w-full">
@@ -103,8 +108,9 @@ const Input = ({
         type={inputType}
         className="w-full rounded-lg border border-violet-300 py-2 pl-9 pr-3 placeholder-violet-500 ring-violet-500 focus:outline-none focus:ring-1"
         placeholder={placeHolderText}
+        value={value}
         onChange={(e) => setValue(e.target.value)}
-      ></input>
+      />
     </label>
   );
 };

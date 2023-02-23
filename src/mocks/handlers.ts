@@ -29,20 +29,23 @@ export const handlers = [
   }),
 
   rest.post(testUrl("/login"), async (req, res, ctx) => {
+    const delay = 1500;
     const { email, password } = await req.json();
     if (!email || !password) {
       return res(
         ctx.status(403),
         ctx.json({
           message: "Bad Request"
-        })
+        }),
+        ctx.delay(delay)
       )
     }
     for (let i = 0; i < users.length; i++) {
       if (users[i].email === email && users[i].password === password) {
         return res(
           ctx.status(200),
-          ctx.json(token)
+          ctx.json(token),
+          ctx.delay(delay)
         )
       }
     }
@@ -50,7 +53,8 @@ export const handlers = [
       ctx.status(401),
       ctx.json({
         message: "Unauthorized"
-      })
+      }),
+      ctx.delay(delay)
     )
   })
 ];
