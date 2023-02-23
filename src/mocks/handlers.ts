@@ -1,6 +1,8 @@
 import { happinessPointsMock, employees, users, token } from './mock-data';
 import { DefaultBodyType, MockedRequest, RestHandler, rest } from "msw";
 
+const delay = 1500;
+
 const testUrl = (baseUrl: string) => {
   return `${import.meta.env.VITE_BASE_URL}${baseUrl}`;
 };
@@ -28,8 +30,13 @@ export const handlers = [
     );
   }),
 
+  rest.post(testUrl("/logout"), (req, res, ctx) => {
+    return res(
+      ctx.delay(delay),
+      ctx.status(200),
+    )
+  }),
   rest.post(testUrl("/login"), async (req, res, ctx) => {
-    const delay = 1500;
     const { email, password } = await req.json();
     if (!email || !password) {
       return res(
@@ -44,7 +51,7 @@ export const handlers = [
       if (users[i].email === email && users[i].password === password) {
         return res(
           ctx.status(200),
-          ctx.json(token),
+          ctx.json({ ...token, ...users[i] }),
           ctx.delay(delay)
         )
       }

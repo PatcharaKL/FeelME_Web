@@ -12,6 +12,9 @@ import {
   SideBarLogo,
 } from "./SideBar";
 import React from "react";
+import { useAppDispatch } from "../../app/hooks";
+import { logout } from "../../features/auth/authSlice";
+import { useLogoutMutation } from "../../services/feelme_api";
 
 const sidebarItemList: SideBarItemType[] = [
   {
@@ -39,6 +42,14 @@ const logOutIcon = (): JSX.Element => {
   );
 };
 const LeftSideBar = () => {
+  const [logoutTrigger, { isLoading }] = useLogoutMutation();
+  const dispatch = useAppDispatch();
+
+  const logoutHandler = async () => {
+    await logoutTrigger(null);
+    dispatch(logout());
+  };
+
   const sidebarItems = sidebarItemList.map((item) => (
     <SideBarItem key={item.id} {...item} />
   ));
@@ -52,7 +63,13 @@ const LeftSideBar = () => {
           {sidebarItems}
         </SideBarItemsGroup>
         <SideBarItemsGroup className="flex flex-col align-middle">
-          <SideBarButton icon={logOutIcon} name="Logout" />
+          <SideBarButton
+            className={`${isLoading && "animate-pulse"}`}
+            disabled={isLoading ? true : false}
+            onClick={logoutHandler}
+            icon={logOutIcon}
+            name="Logout"
+          />
         </SideBarItemsGroup>
       </SideBarContainer>
     </>

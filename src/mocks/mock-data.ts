@@ -112,12 +112,16 @@ export const users = [
     {
         id: 1,
         email: "patchara.pck@gmail.com",
+        name: "Patchara K.",
         password: "secret",
+        position: "Human Resource"
     },
     {
         id: 2,
         email: "sayfar@gmail.com",
+        name: "Sayfar H.",
         password: "secret",
+        position: "Human Resource"
     },
 ]
 // Profile URL
