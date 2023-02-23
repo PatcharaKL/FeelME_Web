@@ -108,6 +108,22 @@ export const employees = [
     },
 ]
 
+export const users = [
+    {
+        id: 1,
+        email: "patchara.pck@gmail.com",
+        password: "secret",
+    },
+    {
+        id: 2,
+        email: "sayfar@gmail.com",
+        password: "secret",
+    },
+]
 // Profile URL
+export const token = {
+    accessToken: "acc123456789-abc",
+    refreshToken: "ref-123456789abc",
+}
 // https://i.pinimg.com/originals/a6/58/32/a65832155622ac173337874f02b218fb.png Female
 // https://cdn.icon-icons.com/icons2/2643/PNG/512/male_boy_person_people_avatar_icon_159358.png Male

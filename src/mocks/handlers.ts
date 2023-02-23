@@ -1,4 +1,4 @@
-import { happinessPointsMock, employees } from './mock-data';
+import { happinessPointsMock, employees, users, token } from './mock-data';
 import { DefaultBodyType, MockedRequest, RestHandler, rest } from "msw";
 
 const testUrl = (baseUrl: string) => {
@@ -27,4 +27,30 @@ export const handlers = [
       ctx.json(employees)
     );
   }),
+
+  rest.post(testUrl("/login"), async (req, res, ctx) => {
+    const { email, password } = await req.json();
+    if (!email || !password) {
+      return res(
+        ctx.status(403),
+        ctx.json({
+          message: "Bad Request"
+        })
+      )
+    }
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].email === email && users[i].password === password) {
+        return res(
+          ctx.status(200),
+          ctx.json(token)
+        )
+      }
+    }
+    return res(
+      ctx.status(401),
+      ctx.json({
+        message: "Unauthorized"
+      })
+    )
+  })
 ];
