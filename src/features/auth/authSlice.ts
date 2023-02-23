@@ -7,6 +7,10 @@ interface AuthState {
     authenticated?: boolean;
     accessToken: string;
     refreshToken: string;
+
+    // ! Temporary
+    name: string,
+    position: string,
 }
 
 // Define the initial state using that type
@@ -14,6 +18,10 @@ const initialState: AuthState = {
     authenticated: false,
     accessToken: "",
     refreshToken: "",
+
+    // ! Temporary
+    name: "",
+    position: "",
 }
 
 export const authSlice = createSlice({
@@ -25,11 +33,19 @@ export const authSlice = createSlice({
             state.authenticated = true;
             state.accessToken = action.payload.accessToken;
             state.refreshToken = action.payload.refreshToken;
+
+            //! Temporary
+            state.name = action.payload.name;
+            state.position = action.payload.position;
         },
         logout: (state) => {
             state.authenticated = false;
             state.accessToken = "";
             state.refreshToken = "";
+
+            //! Temporary
+            state.name = "";
+            state.position = "";
         },
     },
 })

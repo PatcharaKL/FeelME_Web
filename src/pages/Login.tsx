@@ -50,6 +50,7 @@ const Form = (
         email: email,
         password: password,
       }).unwrap();
+      console.log(tokens);
       dispatch(login(tokens));
     } catch (err) {
       alert(JSON.stringify(err));

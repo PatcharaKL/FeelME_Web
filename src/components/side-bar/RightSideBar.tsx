@@ -10,10 +10,11 @@ import {
 } from "./SideBar";
 import { icons } from "../../assets/icons";
 import { SvgIconComponent } from "@mui/icons-material";
+import { useAppSelector } from "../../app/hooks";
 
 const avatar = () => {
-  const name = "Patchara K.";
-  const position = "Fullstack Dev.";
+  const name = useAppSelector((state) => state.auth.name);
+  const position = useAppSelector((state) => state.auth.position);
   const AvatarImage = () => {
     return (
       <img

@@ -28,19 +28,19 @@ export const SideBarLogo = ({ Logo, to = default_nav }: any) => {
 interface SideBarButton {
   name?: string;
   icon?: any;
-  disable: boolean;
+  disabled?: boolean;
 }
-export const SideBarButton = (
-  props: React.HTMLAttributes<HTMLDivElement> & SideBarButton
-) => {
-  const Icon = props.icon;
-  const name = props.name;
-  const isDisable = props.disable;
+export const SideBarButton = ({
+  icon: Icon,
+  name,
+  disabled = false,
+  ...props
+}: React.HTMLAttributes<HTMLDivElement> & SideBarButton) => {
   return (
     <div {...props}>
       <button
         className="flex items-center gap-4 px-4 transition ease-in-out hover:scale-105"
-        disabled={isDisable}
+        disabled
       >
         {Icon && <Icon />}
         {name && <div className="font-medium">{name}</div>}

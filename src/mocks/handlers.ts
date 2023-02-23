@@ -51,7 +51,7 @@ export const handlers = [
       if (users[i].email === email && users[i].password === password) {
         return res(
           ctx.status(200),
-          ctx.json(token),
+          ctx.json({ ...token, ...users[i] }),
           ctx.delay(delay)
         )
       }

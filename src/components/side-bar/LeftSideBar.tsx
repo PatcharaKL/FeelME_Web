@@ -65,7 +65,7 @@ const LeftSideBar = () => {
         <SideBarItemsGroup className="flex flex-col align-middle">
           <SideBarButton
             className={`${isLoading && "animate-pulse"}`}
-            disable={isLoading ? true : false}
+            disabled={isLoading ? true : false}
             onClick={logoutHandler}
             icon={logOutIcon}
             name="Logout"
