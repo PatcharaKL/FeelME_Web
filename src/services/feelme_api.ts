@@ -22,13 +22,12 @@ export const feelmeAPI = createApi({
         body: credential,
       }),
     }),
-    // logout: builder.mutation({
-    //   query: credential => ({
-    //     url: '/logout',
-    //     method: 'POST',
-    //     body: credential,
-    //   }),
-    // }),
+    logout: builder.mutation({
+      query: () => ({
+        url: '/logout',
+        method: 'POST',
+      }),
+    }),
     // getEmployee: builder.query({
     //   query: (id) => `/users/employees/${id}`,
     // }),
