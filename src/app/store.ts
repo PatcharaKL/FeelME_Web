@@ -1,17 +1,19 @@
-import { combineReducers, configureStore } from '@reduxjs/toolkit'
-import type { PreloadedState } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
+import type { PreloadedState } from "@reduxjs/toolkit";
 
-import { feelmeAPI } from '../services/feelme_api'
+import { feelmeAPI } from "../services/feelme_api";
 
-import sidebarSelectionReducer from '../features/sidebar-selection/sidebarSelectionSlice'
-import authReducer from './../features/auth/authSlice';
+import sidebarSelectionReducer from "../features/sidebar-selection/sidebarSelectionSlice";
+import authReducer from "./../features/auth/authSlice";
+import userReducer from "./../features/auth/userSlice";
 
 // Create the root reducer separately so we can extract the RootState type
 const rootReducer = combineReducers({
   [feelmeAPI.reducerPath]: feelmeAPI.reducer,
   sidebarSelection: sidebarSelectionReducer,
-  auth: authReducer
-})
+  auth: authReducer,
+  user: userReducer,
+});
 
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
   return configureStore({
@@ -20,9 +22,9 @@ export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware().concat(feelmeAPI.middleware),
     devTools: true,
-  })
-}
+  });
+};
 
-export type RootState = ReturnType<typeof rootReducer>
-export type AppStore = ReturnType<typeof setupStore>
-export type AppDispatch = AppStore['dispatch']
+export type RootState = ReturnType<typeof rootReducer>;
+export type AppStore = ReturnType<typeof setupStore>;
+export type AppDispatch = AppStore["dispatch"];

@@ -11,10 +11,13 @@ import {
 import { icons } from "../../assets/icons";
 import { SvgIconComponent } from "@mui/icons-material";
 import { useAppSelector } from "../../app/hooks";
+import { useGetEmployeeQuery } from "../../services/feelme_api";
 
 const avatar = () => {
-  const name = useAppSelector((state) => state.auth.name);
-  const position = useAppSelector((state) => state.auth.position);
+  const id = useAppSelector((state) => state.user.id);
+  const { data: user, isLoading: isUserLoading } = useGetEmployeeQuery(id);
+  // const name = useAppSelector((state) => state.auth.name);
+  // const position = useAppSelector((state) => state.auth.position);
   const AvatarImage = () => {
     return (
       <img
@@ -26,13 +29,17 @@ const avatar = () => {
   };
   return (
     <div className="flex flex-col items-center gap-3 text-center">
-      <div className="h-16 w-16">
-        <AvatarImage />
-      </div>
-      <div>
-        <div className="text-lg font-bold text-violet-900">{name}</div>
-        <div className="text-sm text-gray-700">{position}</div>
-      </div>
+      {!isUserLoading && (
+        <>
+          <div className="h-16 w-16">
+            <AvatarImage />
+          </div>
+          <div>
+            <div className="text-lg font-bold text-violet-900">{user.name}</div>
+            <div className="text-sm text-gray-700">{user.position_name}</div>
+          </div>
+        </>
+      )}
     </div>
   );
 };

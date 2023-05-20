@@ -5,10 +5,10 @@ import "./index.css";
 import { setupStore } from "./app/store";
 import { Provider } from "react-redux";
 
-if (process.env.NODE_ENV === "development") {
-  const { worker } = await import("./mocks/browser");
-  worker.start();
-}
+// if (process.env.NODE_ENV === "development") {
+//   const { worker } = await import("./mocks/browser");
+//   worker.start();
+// }
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>

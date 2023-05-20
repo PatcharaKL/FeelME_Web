@@ -1,24 +1,53 @@
+import { Pagination } from "@mui/material";
 import { useGetEmployeesQuery } from "../../services/feelme_api";
 import SearchIcon from "@mui/icons-material/Search";
+import { useState } from "react";
+import CustomPagination from "./CustomPagination";
+
+interface Employees {
+  account_id: number;
+  hp: number;
+  name: string;
+  surname: string;
+  avatar_url: string;
+  position_name: string;
+}
 
 export const Employees = () => {
   const { data: employees, isLoading, isSuccess } = useGetEmployeesQuery({});
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const paginate = (pageNumber: any) => setCurrentPage(pageNumber);
+
   return (
-    <div className="flex flex-col gap-5">
+    <div className="flex h-full flex-col gap-5 py-10">
       <Header />
+      <h1 className="text-4xl font-bold text-violet-900">{isLoading}</h1>
+      {!isLoading && isSuccess && (
+        <CustomPagination
+          itemsPerPage={itemsPerPage}
+          totalItems={employees.length}
+          paginate={paginate}
+        />
+      )}
       <div className="grid grid-cols-4 gap-5">
         {!isLoading &&
           isSuccess &&
-          employees.map((employee: Employees) => (
-            <EmployeesCard
-              key={employee.id}
-              id={employee.id}
-              name={employee.name}
-              avatarURL={employee.avatarURL}
-              position={employee.position}
-              hp={employee.hp}
-            />
-          ))}
+          employees
+            .slice(indexOfFirstItem, indexOfLastItem)
+            .map((employee: Employees) => (
+              <EmployeesCard
+                key={employee.account_id}
+                account_id={employee.account_id}
+                name={employee.name}
+                surname={employee.surname}
+                avatar_url={employee.avatar_url}
+                position_name={employee.position_name}
+                hp={employee.hp}
+              />
+            ))}
       </div>
     </div>
   );
@@ -42,14 +71,15 @@ const Header = () => {
     </div>
   );
 };
-interface Employees {
-  id: number;
-  hp: number;
-  name: string;
-  avatarURL: string;
-  position: string;
-}
-const EmployeesCard = ({ id, hp, name, avatarURL, position }: Employees) => {
+
+const EmployeesCard = ({
+  account_id,
+  hp,
+  name,
+  surname: lastName,
+  avatar_url,
+  position_name,
+}: Employees) => {
   const Overlay = () => {
     return (
       <div className="absolute inset-0 flex items-center justify-center rounded-lg bg-red-400/20 ring-2 ring-red-600/50"></div>
@@ -60,10 +90,12 @@ const EmployeesCard = ({ id, hp, name, avatarURL, position }: Employees) => {
       {hp <= 0 && <Overlay />}
       <div className="flex h-fit w-64 flex-col items-center gap-3 overflow-hidden rounded-lg bg-violet-50 px-4 py-8 text-center shadow-lg shadow-violet-100">
         <HealthBar hp={hp} />
-        <CardImage avatarURL={avatarURL}></CardImage>
+        <CardImage avatarURL={avatar_url}></CardImage>
         <div className="w-full">
-          <p className="truncate text-xl font-bold">{name}</p>
-          <p className="truncate">{position}</p>
+          <p className="truncate text-xl font-bold">
+            {name} {lastName}
+          </p>
+          <p className="truncate">{position_name}</p>
         </div>
       </div>
     </div>
