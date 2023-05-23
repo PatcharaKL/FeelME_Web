@@ -1,7 +1,7 @@
 import { Pagination } from "@mui/material";
 import { useGetEmployeesQuery } from "../../services/feelme_api";
 import SearchIcon from "@mui/icons-material/Search";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CustomPagination from "./CustomPagination";
 
 interface Employees {
@@ -14,7 +14,13 @@ interface Employees {
 }
 
 export const Employees = () => {
-  const { data: employees, isLoading, isSuccess } = useGetEmployeesQuery({});
+  const {
+    data: employees,
+    isLoading,
+    isSuccess,
+    isFetching,
+    error,
+  } = useGetEmployeesQuery({});
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -22,15 +28,16 @@ export const Employees = () => {
   const paginate = (pageNumber: any) => setCurrentPage(pageNumber);
 
   return (
-    <div className="flex h-full flex-col gap-5 py-10">
-      <Header />
-      <h1 className="text-4xl font-bold text-violet-900">{isLoading}</h1>
-      {!isLoading && isSuccess && (
-        <CustomPagination
-          itemsPerPage={itemsPerPage}
-          totalItems={employees.length}
-          paginate={paginate}
-        />
+    <div className="flex h-full flex-col gap-5">
+      {!isLoading && isSuccess && !isFetching && (
+        <>
+          <Header />
+          <CustomPagination
+            itemsPerPage={itemsPerPage}
+            totalItems={employees.length}
+            paginate={paginate}
+          />
+        </>
       )}
       <div className="grid grid-cols-4 gap-5">
         {!isLoading &&

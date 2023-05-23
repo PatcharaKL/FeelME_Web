@@ -6,21 +6,24 @@ import { feelmeAPI } from "../services/feelme_api";
 import sidebarSelectionReducer from "../features/sidebar-selection/sidebarSelectionSlice";
 import authReducer from "./../features/auth/authSlice";
 import userReducer from "./../features/auth/userSlice";
+import { RefreshTokenMiddleware } from "./middleware";
 
 // Create the root reducer separately so we can extract the RootState type
 const rootReducer = combineReducers({
-  [feelmeAPI.reducerPath]: feelmeAPI.reducer,
   sidebarSelection: sidebarSelectionReducer,
   auth: authReducer,
   user: userReducer,
+  [feelmeAPI.reducerPath]: feelmeAPI.reducer,
 });
-
 export const setupStore = (preloadedState?: PreloadedState<RootState>) => {
   return configureStore({
     reducer: rootReducer,
     preloadedState,
     middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware().concat(feelmeAPI.middleware),
+      getDefaultMiddleware().concat(
+        feelmeAPI.middleware
+        // RefreshTokenMiddleware
+      ),
     devTools: true,
   });
 };

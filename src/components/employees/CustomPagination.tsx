@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Pagination, PaginationItem } from "@mui/material";
+import { Pagination } from "@mui/material";
 
   const CustomPagination = ({ itemsPerPage, totalItems, paginate }:any) => {
     const [currentPage, setCurrentPage] = useState(1);

@@ -3,7 +3,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import LockIcon from "@mui/icons-material/Lock";
 import { FeelMeLogo } from "../components/FeelMeLogo";
 import { useCallback, useEffect, useState } from "react";
-import { useGetEmployeeQuery, useLoginMutation } from "../services/feelme_api";
+import { useLoginMutation } from "../services/feelme_api";
 import { useAppDispatch } from "../app/hooks";
 import { login } from "../features/auth/authSlice";
 import { setID } from "../features/auth/userSlice";

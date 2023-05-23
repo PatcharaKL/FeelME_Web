@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { useAppSelector } from "../../app/hooks";
-import { Chart } from "../graph/BarChart";
+import { HappinessScoreTrend } from "../dashboard/HappinessScoreTrend";
 import { Employees } from "../employees/Employees";
 
 export const Board = () => {
@@ -10,7 +10,7 @@ export const Board = () => {
 
   const Display = useCallback(() => {
     if (selectedID === 1) {
-      return <Chart />;
+      return <HappinessScoreTrend />;
     }
     if (selectedID === 2) {
       return <Employees />;
@@ -21,7 +21,8 @@ export const Board = () => {
   return (
     <div
       id="board"
-      className="flex h-full w-full flex-1 items-center justify-center overflow-auto rounded-lg bg-white shadow-xl shadow-violet-200"
+      className="flex h-full w-full flex-1 flex-col items-center justify-center 
+      overflow-auto rounded-lg bg-white p-6 shadow-xl shadow-violet-200"
     >
       {Display()}
     </div>
