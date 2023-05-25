@@ -22,21 +22,21 @@ const avatar = () => {
     return (
       <img
         className="rounded-full"
-        src={images.avatarImage}
+        src={user.avatar_url}
         alt="user avatar"
       />
     );
   };
   return (
-    <div className="flex flex-col items-center gap-3 text-center">
-      {!isUserLoading && (
+    <div className="flex flex-col items-center gap-3 text-center overflow-hidden">
+      {user && !isUserLoading && (
         <>
           <div className="h-16 w-16">
             <AvatarImage />
           </div>
           <div>
-            <div className="text-lg font-bold text-violet-900">{user.name}</div>
-            <div className="text-sm text-gray-700">{user.position_name}</div>
+            <div className="text-lg font-bold text-violet-900 truncate">{user.name} {user.surname.slice(0, 1)+"."}</div>
+            <div className="text-sm text-gray-700 truncate">{user.position_name}</div>
           </div>
         </>
       )}
@@ -58,13 +58,13 @@ const IconWrapper = (icon: SvgIconComponent): JSX.Element => {
 const RightSideBar = () => {
   return (
     <>
-      <SideBarContainer className="flex h-full w-fit flex-col gap-12 rounded-xl py-6 px-2 pt-6">
+      <SideBarContainer className="flex h-full w-24 flex-col gap-12 rounded-xl py-6 px-2 pt-6">
         <SideBarItemsGroup className="flex justify-center">
           <SideBarLogo Logo={avatar} />
         </SideBarItemsGroup>
         <SideBarItemsGroup className="flex flex-1 flex-col items-center justify-end gap-4">
-          <SideBarButton icon={() => IconWrapper(icons.message)} />
-          <SideBarButton icon={() => IconWrapper(icons.notification)} />
+          {/* <SideBarButton icon={() => IconWrapper(icons.message)} />
+          <SideBarButton icon={() => IconWrapper(icons.notification)} /> */}
         </SideBarItemsGroup>
       </SideBarContainer>
     </>

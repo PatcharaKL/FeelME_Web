@@ -61,15 +61,8 @@ export const feelmeAPI = createApi({
       query: () => `/health-check`,
     }),
     getHappinessPoints: builder.query({
-      query: (
-        arg: { id: number | null; period: string | null } = {
-          id: null,
-          period: null,
-        }
-      ) => ({
-        url: `/users/employees/${arg.id}/${
-          arg.period ? `${arg.period}/` : ":period/"
-        }happiness-points`,
+      query: (id: number) => ({
+        url: `happiness-score-all-time?account-id=${id}`,
         method: "GET",
       }),
     }),
@@ -100,8 +93,14 @@ export const feelmeAPI = createApi({
       }),
     }),
     getOverallHappinessScore: builder.query({
-      query: (period) => ({
-        url: `happiness-score?$period={period}`,
+      query: ({ period, id }) => ({
+        url: `happiness-score?period=${period}&account-id=${id}`,
+        method: "GET",
+      }),
+    }),
+    getDepartmentProportion: builder.query({
+      query: () => ({
+        url: `/happiness-score-department`,
         method: "GET",
       }),
     }),
@@ -118,4 +117,5 @@ export const {
   useLogoutMutation,
   useGetEmployeeQuery,
   useGetOverallHappinessScoreQuery,
+  useGetDepartmentProportionQuery,
 } = feelmeAPI;

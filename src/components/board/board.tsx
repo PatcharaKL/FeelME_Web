@@ -2,6 +2,7 @@ import { useCallback } from "react";
 import { useAppSelector } from "../../app/hooks";
 import { HappinessScoreTrend } from "../dashboard/HappinessScoreTrend";
 import { Employees } from "../employees/Employees";
+import Dashboard from "../dashboard/Dashboard";
 
 export const Board = () => {
   const selectedID = useAppSelector(
@@ -10,7 +11,7 @@ export const Board = () => {
 
   const Display = useCallback(() => {
     if (selectedID === 1) {
-      return <HappinessScoreTrend />;
+      return <Dashboard />;
     }
     if (selectedID === 2) {
       return <Employees />;

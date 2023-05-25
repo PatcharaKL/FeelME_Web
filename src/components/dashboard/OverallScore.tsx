@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useGetOverallHappinessScoreQuery } from "../../services/feelme_api";
 
-const OverallScore = () => {
+const OverallScore = ({employeeID = ""}: any) => {
   const [period, setPeriod] = useState("");
   const {
     data: hpScore,
     isLoading,
     isSuccess,
-  } = useGetOverallHappinessScoreQuery("");
+  } = useGetOverallHappinessScoreQuery({period: "", id: employeeID});
   const score = {
     overall:
       hpScore && !isLoading && isSuccess
@@ -28,9 +28,9 @@ const OverallScore = () => {
   };
   return (
     <>
-      <div className="flex justify-evenly gap-20 rounded-xl border border-violet-50 px-20 py-7 shadow-md shadow-violet-100">
+      <div className="flex overflow-hidden w-full items-center h-full justify-evenly rounded-xl border border-violet-50 py-7 shadow-md shadow-violet-100">
         <ScoreItems label="Overall Score" hpScore={score.overall} />
-        <ScoreItems label="Working Score" hpScore={score.working} />
+        <ScoreItems label="Workplace Score" hpScore={score.working} />
         <ScoreItems label="Self Score" hpScore={score.self} />
         <ScoreItems label="Social Score" hpScore={score.social} />
       </div>

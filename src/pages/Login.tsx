@@ -46,7 +46,8 @@ const Form = (
   const [loginTrigger, { isLoading: loginLoading, isSuccess: loginSuccess }] =
     useLoginMutation();
 
-  const loginHandler = async () => {
+  const loginHandler = async (e: React.FormEvent) => {
+    e.preventDefault()
     try {
       const { account_id, accessToken, refreshToken, road_id } =
         await loginTrigger({
@@ -70,7 +71,7 @@ const Form = (
     <>
       <div className="flex h-fit w-96 flex-col items-center justify-center gap-8 rounded-xl bg-white py-14 px-10 ring-1 ring-violet-500">
         <Logo />
-        <div className="flex w-full flex-col gap-6">
+        <form className="flex w-full flex-col gap-6" onSubmit={e => loginHandler(e)}>
           <Input
             value={email}
             setValue={setEmail}
@@ -87,7 +88,7 @@ const Form = (
           />
           {!loginLoading ? (
             <button
-              onClick={loginHandler}
+              type="submit"
               className="w-full rounded-lg bg-violet-50 py-2 pr-3 font-semibold text-violet-700 hover:bg-violet-100 active:bg-violet-200"
             >
               Login
@@ -97,7 +98,7 @@ const Form = (
               Loading..
             </div>
           )}
-        </div>
+        </form>
       </div>
     </>
   );

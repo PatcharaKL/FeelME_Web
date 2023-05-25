@@ -31,9 +31,11 @@ export const authSlice = createSlice({
     logout: (state) => {
       localStorage.removeItem("refreshToken");
       localStorage.removeItem("accessToken");
+      localStorage.setItem("sideBarSelectedID", "1");
       state.authenticated = false;
       state.accessToken = "";
       state.refreshToken = "";
+      localStorage.removeItem("userID");
     },
   },
 });

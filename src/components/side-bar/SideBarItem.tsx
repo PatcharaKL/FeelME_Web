@@ -19,7 +19,10 @@ export const SideBarItem = ({
           ? "bg-violet-100 text-violet-900  hover:bg-violet-100 hover:text-violet-900"
           : "text-gray-500 hover:text-violet-800"
       }`}
-      onClick={() => dispatch(setSelectedItem(id))}
+      onClick={() => {
+        dispatch(setSelectedItem(id));
+        localStorage.setItem("sideBarSelectedID", String(id));
+      }}
     >
       <span className="flex select-none gap-4 px-4 py-2">
         <Icon

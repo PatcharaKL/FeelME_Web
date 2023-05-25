@@ -3,7 +3,8 @@ import { useGetEmployeesQuery } from "../../services/feelme_api";
 import SearchIcon from "@mui/icons-material/Search";
 import { useEffect, useState } from "react";
 import CustomPagination from "./CustomPagination";
-
+import EmployeeDashboard from "../dashboard/EmployeeDashboard";
+import { HealthBar } from "./HealthBar";
 interface Employees {
   account_id: number;
   hp: number;
@@ -11,6 +12,7 @@ interface Employees {
   surname: string;
   avatar_url: string;
   position_name: string;
+  setDashboardVisible: any;
 }
 
 export const Employees = () => {
@@ -26,9 +28,12 @@ export const Employees = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const paginate = (pageNumber: any) => setCurrentPage(pageNumber);
+  const [dashboardVisible, setDashboardVisible] = useState({status: false, selectedID: null});
 
   return (
     <div className="flex h-full flex-col gap-5">
+      {dashboardVisible.status && <EmployeeDashboard employeeID={dashboardVisible.selectedID} setDashboardVisible={setDashboardVisible}/>}
+
       {!isLoading && isSuccess && !isFetching && (
         <>
           <Header />
@@ -53,6 +58,7 @@ export const Employees = () => {
                 avatar_url={employee.avatar_url}
                 position_name={employee.position_name}
                 hp={employee.hp}
+                setDashboardVisible={setDashboardVisible}
               />
             ))}
       </div>
@@ -86,6 +92,7 @@ const EmployeesCard = ({
   surname: lastName,
   avatar_url,
   position_name,
+  setDashboardVisible,
 }: Employees) => {
   const Overlay = () => {
     return (
@@ -93,7 +100,7 @@ const EmployeesCard = ({
     );
   };
   return (
-    <div className="relative">
+    <div className="relative -z-0" onClick={() => setDashboardVisible({status: true, selectedID: account_id})}>
       {hp <= 0 && <Overlay />}
       <div className="flex h-fit w-64 flex-col items-center gap-3 overflow-hidden rounded-lg bg-violet-50 px-4 py-8 text-center shadow-lg shadow-violet-100">
         <HealthBar hp={hp} />
@@ -117,36 +124,5 @@ const CardImage = ({ avatarURL }: any) => {
         src={avatarURL}
       ></img>
     </>
-  );
-};
-
-const HealthBar = ({ hp }: { hp: number }) => {
-  const calHpColor = () => {
-    if (hp <= 20) {
-      return "#E11D48";
-    }
-    if (hp <= 50) {
-      return "#FBBF24";
-    }
-    if (hp <= 100) {
-      return "#22C55E";
-    }
-    return "#303030";
-  };
-
-  const hp_style = {
-    width: hp + "%",
-    backgroundColor: calHpColor(),
-  };
-
-  return (
-    <div className="w-full">
-      <div className="text-md font-semibold">
-        HP: <span className="text-violet-700">{hp}/100</span>
-      </div>
-      <div className="flex h-4 flex-col items-start justify-center rounded-md bg-violet-200">
-        <div className={`h-2 w-10/12 rounded-md`} style={hp_style}></div>
-      </div>
-    </div>
   );
 };

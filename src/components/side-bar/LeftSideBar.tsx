@@ -27,11 +27,11 @@ const sidebarItemList: SideBarItemType[] = [
     name: "Employees",
     icon: icons.diversity,
   },
-  {
-    id: 3,
-    name: "Setting",
-    icon: icons.setting,
-  },
+  // {
+  //   id: 3,
+  //   name: "Setting",
+  //   icon: icons.setting,
+  // },
 ];
 
 const logOutIcon = (): JSX.Element => {
