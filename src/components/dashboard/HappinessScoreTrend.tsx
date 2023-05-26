@@ -81,7 +81,7 @@ export const HappinessScoreTrend = ({ id = "" }: any) => {
 
   return (
     <div className="h-full w-full">
-      <div className="text-2xl font-semibold text-gray-800">
+      <div className="text-xl font-semibold text-gray-800">
         Happiness Score Trend
       </div>
       <div className="text-md font-light text-gray-500">
@@ -94,10 +94,8 @@ export const HappinessScoreTrend = ({ id = "" }: any) => {
           <LineChart
             data={transformToChartData(data)}
             margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
+              top: 20,
+              bottom: 50,
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />

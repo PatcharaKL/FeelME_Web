@@ -39,7 +39,7 @@ const transformToChartData = (
     fuzzy_self_points_average,
     fuzzy_work_points_average,
     fuzzy_co_worker_points_average,
-    value_over_all_average
+    value_over_all_average,
   } = rawData;
 
   for (let i = 0; i < fuzzy_self_points_average.length; i++) {
@@ -67,36 +67,32 @@ const DepartmentBarChart = () => {
   const { data, isLoading, isSuccess } = useGetDepartmentProportionQuery({});
   return (
     <div className="h-full w-full">
-      <div className="text-2xl font-semibold text-gray-800">
+      <div className="text-xl font-semibold text-gray-800">
         Happiness Score Proportion
       </div>
       <div className="text-md font-light text-gray-500">
         happiness score proportion of all departments
       </div>
       {!isLoading ? (
-        <ResponsiveContainer width="100%" height="100%">
-          <BarChart
-            width={500}
-            height={300}
-            data={transformToChartData(data)}
-            margin={{
-              top: 5,
-              right: 30,
-              left: 20,
-              bottom: 5,
-            }}
-          >
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="Department" />
-            <YAxis domain={[0, 100]}/>
-            <Tooltip />
-            <Legend verticalAlign="top" height={36}/>
-            <Bar dataKey="self_points" fill="#ff828c" />
-            <Bar dataKey="work_points" fill="#5fd28b" />
-            <Bar dataKey="co_worker_points" fill="#caa782" />
-            <Bar dataKey="overall_score" fill="#8884d8" />
-          </BarChart>
-        </ResponsiveContainer>
+        <div className="w-full mt-7 h-full rounded-xl border border-violet-100 bg-gradient-to-tr from-indigo-50 py-5 pr-10">
+          <ResponsiveContainer width="100%" height="100%">
+            <BarChart
+              width={600}
+              height={300}
+              data={transformToChartData(data)}
+            >
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="department" />
+              <YAxis domain={[0, 100]} />
+              <Tooltip />
+              <Legend verticalAlign="top" height={36} />
+              <Bar name="Overall" dataKey="overall_score" fill="#8884d8" />
+              <Bar name="Workplace" dataKey="work_points" fill="#5fd28bb1" />
+              <Bar name="Self" dataKey="self_points" fill="#ff828c" />
+              <Bar name="Social" dataKey="co_worker_points" fill="#caa782" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
       ) : (
         <div>Loading..</div>
       )}

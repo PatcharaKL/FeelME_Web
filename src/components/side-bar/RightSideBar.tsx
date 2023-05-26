@@ -36,7 +36,7 @@ const avatar = () => {
           </div>
           <div>
             <div className="text-lg font-bold text-violet-900 truncate">{user.name} {user.surname.slice(0, 1)+"."}</div>
-            <div className="text-sm text-gray-700 truncate">{user.position_name}</div>
+            <div className="text-xs text-gray-700 truncate">{user.position_name}</div>
           </div>
         </>
       )}
